@@ -103,18 +103,20 @@ public class Admin {
         update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                try {
-                    int pass = new Integer(passtext.getText());
-                    AllobjController.siswaC.search(usertext.getText(), pass);
-                    String namaLogin = AllobjController.siswaC.getDataLogin().getNama();
-                    int npm = AllobjController.siswaC.getDataLogin().getNpm();
-                    JOptionPane.showMessageDialog(null, "update akun " + namaLogin + " Npm : " + npm,
-                            "information", JOptionPane.INFORMATION_MESSAGE);
-                    frame.dispose();
-                    updateDash update = new updateDash();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Data yang anda masukkan salah", "registrasi gagal ",
-                            JOptionPane.INFORMATION_MESSAGE);
+                int pass = new Integer(passtext.getText());
+                int check = AllobjController.siswaC.search(usertext.getText(), pass);
+                if (check != -1) {
+                    try {
+                        String namaLogin = AllobjController.siswaC.getDataLogin().getNama();
+                        int npm = AllobjController.siswaC.getDataLogin().getNpm();
+                        JOptionPane.showMessageDialog(null, "update akun " + namaLogin + " Npm : " + npm,
+                                "information", JOptionPane.INFORMATION_MESSAGE);
+                        frame.dispose();
+                        updateDash update = new updateDash();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Data yang anda masukkan salah", "registrasi gagal ",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }
         });
@@ -122,16 +124,23 @@ public class Admin {
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                try {
-                    int pass = new Integer(passtext.getText());
-                    AllobjController.siswaC.search(usertext.getText(), pass);
-                    String namaLogin = AllobjController.siswaC.getDataLogin().getNama();
-                    int npm = AllobjController.siswaC.getDataLogin().getNpm();
-                    JOptionPane.showMessageDialog(null, "  Delete akun " + namaLogin + " Npm : " + npm,
-                            "Warning", JOptionPane.INFORMATION_MESSAGE);
-                    AllobjController.siswaC.delete();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Data yang anda masukkan salah", "registrasi gagal ",
+                int pass = new Integer(passtext.getText());
+                AllobjController.siswaC.search(usertext.getText(), pass);
+                int check = AllobjController.siswaC.search(usertext.getText(), pass);
+                if (check != -1) {
+                    try {
+
+                        String namaLogin = AllobjController.siswaC.getDataLogin().getNama();
+                        int npm = AllobjController.siswaC.getDataLogin().getNpm();
+                        JOptionPane.showMessageDialog(null, "  Delete akun " + namaLogin + " Npm : " + npm,
+                                "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        AllobjController.siswaC.delete();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Data yang anda masukkan salah", "Information",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data yang anda masukkan salah", "Information",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
 

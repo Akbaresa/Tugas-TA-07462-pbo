@@ -18,7 +18,8 @@ public class SiswaController implements InterfaceController {
 
     public int search(String nama, int npm) {
         for (int i = 0; i < AllModelObj.siswa.getArrayList(); i++) {
-            if (nama.equals(AllModelObj.siswa.listSiswa.get(i).getNama()) && npm == getNpmInc()) {
+            if (nama.equals(AllModelObj.siswa.listSiswa.get(i).getNama())
+                    && npm == AllModelObj.siswa.listSiswa.get(i).getNpm()) {
                 return i;
             }
         }

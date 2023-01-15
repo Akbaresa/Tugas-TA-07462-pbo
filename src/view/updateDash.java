@@ -19,7 +19,7 @@ public class updateDash {
     JTextField textnamalogin, textnotelp, texttgllahir, textnamadaftar, textAlamat, textLogin;
     JLabel labelnpmlogin, labelpasswordlogin, labelnotelp, labeltgllahir, labelnamadaftar, labelpassworddaftar,
             labelAlamat, loginJLabel;
-    JButton check, Reg, JBlogin, loginmasuk;
+    JButton check, update, JBlogin, loginmasuk;
     JPasswordField passwordlogin, passworddaftar;
     JDesktopPane coba;
     // JCheckBox coba;
@@ -70,10 +70,10 @@ public class updateDash {
         textAlamat.setBounds(220, 420, 200, 30);
         LogReg.add(textAlamat);
 
-        Reg = new JButton("update");
-        Reg.setBounds(260, 470, 90, 30);
-        Reg.setBackground(ColorUIResource.getHSBColor(0, 0, 26));
-        LogReg.add(Reg);
+        update = new JButton("update");
+        update.setBounds(260, 470, 90, 30);
+        update.setBackground(ColorUIResource.getHSBColor(0, 0, 26));
+        LogReg.add(update);
 
         JBlogin = new JButton("back");
         JBlogin.setFocusPainted(false);
@@ -98,11 +98,11 @@ public class updateDash {
             }
         });
 
-        Reg.addActionListener(new ActionListener() {
+        update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                try {
 
+                try {
                     String nama = textnamadaftar.getText();
                     String pass = passworddaftar.getText();
                     String alamat = textAlamat.getText();
@@ -114,7 +114,7 @@ public class updateDash {
 
                     kosong();
                 } catch (Exception exception) {
-                    JOptionPane.showMessageDialog(null, "Format penulisan salah", "registrasi gagal ",
+                    JOptionPane.showMessageDialog(null, "Format penulisan salah", "updateistrasi gagal ",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
             }
