@@ -2,14 +2,23 @@ package controller;
 
 import java.util.Date;
 
+import entity.Kursus;
 import entity.Peserta;
 
 public class SiswaController implements InterfaceController {
-    private int cekLogin = 0;
+    public int cekLogin = 0;
     public int NpmInc = 0;
 
     public int getNpmInc() {
         return NpmInc;
+    }
+
+    public void insertKursus(String modul, String jam, String kelas) {
+        AllModelObj.siswa.insertKursus(new Kursus(modul, jam, kelas));
+    }
+
+    public Kursus getDatakKursus(int index) {
+        return AllModelObj.siswa.getDataKursus(index);
     }
 
     public int getCekLogin() {
@@ -18,8 +27,7 @@ public class SiswaController implements InterfaceController {
 
     public int search(String nama, int npm) {
         for (int i = 0; i < AllModelObj.siswa.getArrayList(); i++) {
-            if (nama.equals(AllModelObj.siswa.listSiswa.get(i).getNama())
-                    && npm == AllModelObj.siswa.listSiswa.get(i).getNpm()) {
+            if (nama.equals(AllModelObj.siswa.listSiswa.get(i).getNama()) && npm == getNpmInc()) {
                 return i;
             }
         }
@@ -34,12 +42,12 @@ public class SiswaController implements InterfaceController {
         return AllModelObj.siswa.getPeserta(cekLogin);
     }
 
-    public void reg(String nama, String alamat, String noTelp, String password, Date tgllahir) {
-        AllModelObj.siswa.insert(new Peserta(nama, alamat, noTelp, password, tgllahir, NpmInc++));
+    public void reg(String nama, String gmail, String password, Date tgllahir) {
+        AllModelObj.siswa.insert(new Peserta(nama, gmail, password, tgllahir));
     }
 
-    public void set(String nama, String alamat, String noTelp, String password, Date tgllahir) {
-        AllModelObj.siswa.set(new Peserta(nama, alamat, noTelp, password, tgllahir, NpmInc));
+    public void set(String nama, String gmail, String password, Date tgllahir) {
+        AllModelObj.siswa.set(new Peserta(nama, gmail, password, tgllahir));
     }
 
     @Override
@@ -52,31 +60,8 @@ public class SiswaController implements InterfaceController {
         return AllModelObj.siswa.getArrayList();
     }
 
-    public void setName(String newName) {
-        AllModelObj.siswa.setName(cekLogin, newName);
-
-    }
-
-    public void setAddres(String newAddres) {
-        AllModelObj.siswa.setAddres(cekLogin, newAddres);
-    }
-
-    public void setNotTlp(String noTlp) {
-        AllModelObj.siswa.setNotTlp(cekLogin, noTlp);
-
-    }
-
-    public void setPass(String newPass) {
-        AllModelObj.siswa.setPass(cekLogin, newPass);
-    }
-
-    public void delete() {
-        AllModelObj.siswa.delete(cekLogin);
-    }
-
     @Override
     public int loginAdmin(String id, String pass) {
-
         return 0;
     }
 

@@ -3,14 +3,13 @@ package entity;
 import java.util.Date;
 
 public class Peserta extends Member {
-    private String alamat, noTelpon, mdl, jdwl, kls;
+    private String alamat, gmail, mdl, jdwl, kls;
     private int Npm;
     Date tglLahir;
 
-    public Peserta(String nama, String alamat, String noTelpon, String password, Date tglLhr, int Npm) {
+    public Peserta(String nama, String gmail, String password, Date tglLhr) {
         super(nama, password);
-        this.alamat = alamat;
-        this.noTelpon = noTelpon;
+        this.gmail = gmail;
         this.tglLahir = tglLhr;
         this.Npm = Npm;
     }
@@ -27,16 +26,16 @@ public class Peserta extends Member {
         return alamat;
     }
 
-    public String getNoTelpon() {
-        return noTelpon;
+    public String getgmail() {
+        return gmail;
     }
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    public void setNoTelpon(String noTelpon) {
-        this.noTelpon = noTelpon;
+    public void setgmail(String gmail) {
+        this.gmail = gmail;
     }
 
     @Override

@@ -1,20 +1,20 @@
 package entity;
 
 public class Kursus {
-    private String modul, jadwal, kelas;
+    private String modul, jam, kelas;
 
     public Kursus(String mdl, String jdwl, String kls) {
         this.modul = mdl;
-        this.jadwal = jdwl;
+        this.jam = jdwl;
         this.kelas = kls;
     }
 
-    public void setJadwal(String jadwal) {
-        this.jadwal = jadwal;
+    public void setjam(String jam) {
+        this.jam = jam;
     }
 
-    public String getJadwal() {
-        return jadwal;
+    public String getjam() {
+        return jam;
     }
 
     public void setKelas(String kelas) {

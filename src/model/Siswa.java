@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import entity.*;
+import viewFull.reg_gui;
 
 public class Siswa {
     public int cek = 0;
@@ -18,6 +19,10 @@ public class Siswa {
         this.listKursus = new ArrayList<>();
     }
 
+    public void insertKursus(Kursus kursus) {
+        listKursus.add(kursus);
+    }
+
     public void insert(Peserta peserta) {
         listSiswa.add(peserta);
     }
@@ -26,13 +31,17 @@ public class Siswa {
         listSiswa.get(index);
     }
 
+    public Kursus getDataKursus(int index) {
+        return listKursus.get(index);
+    }
+
     public void set(Peserta peserta) {
         listSiswa.set(cek, peserta);
     }
 
     public int cekLogin(String nama, String password) {
         for (int j = 0; j < listSiswa.size(); j++) {
-            if (getPeserta(j).getNama().equals(nama) && getPeserta(j).getPass().equals(password)) {
+            if (listSiswa.get(j).getNama().equals(nama) && listSiswa.get(j).getPass().equals(password)) {
                 cek = j;
             } else {
                 cek = -1;
@@ -43,7 +52,10 @@ public class Siswa {
 
     public ArrayList<Peserta> getListSiswa() {
         return listSiswa;
+    }
 
+    public int getArraylistKursus() {
+        return listKursus.size();
     }
 
     public int jumlah_data_array_peserta() {
@@ -56,27 +68,6 @@ public class Siswa {
 
     public Peserta getPeserta(int index) {
         return listSiswa.get(index);
-    }
-
-    public void setName(int index, String nama_baru) {
-
-        listSiswa.get(index).setNama(nama_baru);
-    }
-
-    public void setAddres(int index, String alamat_baru) {
-        listSiswa.get(index).setAlamat(alamat_baru);
-    }
-
-    public void setNotTlp(int index, String nomor_telepon_baru) {
-        listSiswa.get(index).setNoTelpon(nomor_telepon_baru);
-    }
-
-    public void setPass(int index, String password_baru) {
-        listSiswa.get(index).setPass(password_baru);
-    }
-
-    public void delete(int index) {
-        listSiswa.remove(index);
     }
 
 }

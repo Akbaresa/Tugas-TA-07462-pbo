@@ -27,9 +27,10 @@ public class AdminController implements InterfaceController {
         return AllModelObj.siswa.listSiswa.get(index);
     }
 
-    public int searchByNpm(int npm) {
+    public int search(String nama, String gmail) {
         for (int i = 0; i < AllModelObj.siswa.listSiswa.size(); i++) {
-            if (npm == AllModelObj.siswa.listSiswa.get(i).getNpm()) {
+            if (gmail.equals(AllModelObj.siswa.getListSiswa().get(i).getgmail())
+                    && nama.equals(AllModelObj.siswa.getListSiswa().get(i).getNama())) {
                 return i;
             }
         }
